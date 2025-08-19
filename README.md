@@ -63,29 +63,6 @@
 | Janela de manutenção           | Definir janela       | Horário para manutenção planejada |
 
 
----
-
-## 6️⃣ Marcação
-- Adicione tags para identificar **proprietário** e **ambiente** (Produção, Desenvolvimento)
-
-![Marcações](azure-sql-managed-instance-host-name.png)
-
----
-
-## 7️⃣ Revisar + Criar
-- Clique em **Examinar + criar** e revise as escolhas
-- Clique em **Criar** para implantar a instância
-
-- ![Monitoramento](azure-sql-managed-instance-create-deployment-in-progress.png)
-
-
-## 8️⃣ Monitoramento
-- Use o ícone **Notificações** para verificar o progresso
-- Após a conclusão, acesse o **grupo de recursos** para verificar a instância
-
-![Exibir instancia ](azure-sql-managed-instance-resources.png)
-
-
 ## Revisar Configurações de Rede
 
 1. Selecione o recurso **Tabela de rotas** em seu grupo de recursos para examinar o objeto padrão de tabela de rotas definido pelo usuário e as entradas para rotear o tráfego de e dentro da rede virtual da Instância Gerenciada de SQL.  
