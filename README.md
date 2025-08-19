@@ -85,19 +85,52 @@
 
 ![Exibir instancia ](azure-sql-managed-instance-resources.png)
 
+
+## Revisar Configurações de Rede
+
+1. Selecione o recurso **Tabela de rotas** em seu grupo de recursos para examinar o objeto padrão de tabela de rotas definido pelo usuário e as entradas para rotear o tráfego de e dentro da rede virtual da Instância Gerenciada de SQL.  
+   - Para alterar ou adicionar rotas, abra **Rotas** nas configurações da tabela de rotas.
+
+2. Selecione o objeto do **Grupo de Segurança de Rede** para examinar as regras de segurança de entrada e saída.  
+   - Para alterar ou adicionar regras, abra **Regras de Segurança de Entrada** e **Regras de Segurança de Saída** nas configurações do grupo de segurança de rede.
+
+![Regras de Segurança](azure-sql-managed-instance-security-rules.png)
+
+**Importante:**  
+Se você habilitou o ponto de extremidade público, abra as portas necessárias para permitir conexões da Internet pública com a Instância Gerenciada de SQL.
+
 ---
 
-## 9️⃣ Criar Banco de Dados
-1. Acesse a instância no portal
-2. Clique em **+ Novo banco de dados**
-3. Configure nome, fonte de dados (vazio ou backup), e demais parâmetros
-4. Clique em **Revisar + criar → Criar**
+## Criar Banco de Dados
 
-![Criar Banco de Dados](create-new-database-portal.png)
+Você pode criar um novo banco de dados usando o **Portal do Azure**, **PowerShell** ou **CLI do Azure**.
+
+### Portal do Azure
+
+1. Acesse a **Instância Gerenciada de SQL** no portal do Azure.
+2. Na página **Visão Geral**, clique em **+ Novo banco de dados**.
+   
+   ![Novo Banco de Dados](create-new-database-portal.png)
+
+3. Dê um nome para o banco de dados na guia **Básico**.
+4. Na guia **Fonte de dados**, selecione:
+   - **Nenhuma** para um banco de dados vazio, ou
+   - Restaure de um **backup** existente.
+5. Defina as configurações restantes nas outras guias.
+6. Clique em **Revisar + criar** para validar.
+7. Clique em **Criar** para implantar o banco de dados.
 
 ---
 
-## 10️⃣ Recuperar Detalhes de Conexão
-- Na guia **Visão Geral**, copie o **Host / FQDN** para se conectar à instância
+## Recuperar Detalhes da Conexão
 
-![Detalhes de Conexão](images/detalhes_conexao.png)
+Para se conectar à Instância Gerenciada de SQL:
+
+1. Volte ao grupo de recursos e escolha a instância criada.
+2. Na guia **Visão Geral**, localize a propriedade **Host**.
+3. Copie o nome do host para uso na conexão.
+
+![Detalhes de Conexão](azure-sql-managed-instance-host-name.png)
+
+
+
