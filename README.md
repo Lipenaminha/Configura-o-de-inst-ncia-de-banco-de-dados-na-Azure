@@ -1,34 +1,27 @@
-## Pré-requisitos
-- Uma assinatura do Azure (ou criar uma conta gratuita);
-- Permissões adequadas:
-  - Função de **Contribuidor** da Instância Gerenciada de SQL atribuída;
-  - Permissão `Microsoft.Sql/managedInstances/write` se provisionar em sub-rede delegada;
-- Módulo **Az.SQL** atualizado no PowerShell ou CLI do Azure.
+## 1️⃣ Acesso ao Portal do Azure
+1. Entre no [Portal do Azure](https://portal.azure.com)
+2. No menu esquerdo, selecione **SQL do Azure** ou pesquise em **Todos os serviços**
+3. Clique em **+ Criar** e escolha **Instâncias Gerenciadas de SQL → Criar**
 
-## Criando a Instância Gerenciada de SQL
-
-### 1. Acesso ao Portal do Azure
-1. Entre no [Portal do Azure](https://portal.azure.com).  
-2. No menu esquerdo, selecione **SQL do Azure** ou pesquise **SQL do Azure** em **Todos os serviços**.  
-3. Clique em **+ Criar** e selecione **Instâncias Gerenciadas de SQL → Criar**.  
+![Portal Azure - Criar Instância](select-sql-deploment-page.png)
 
 ---
 
-### 2. Guia Básico
-Preencha os campos obrigatórios:
-
+## 2️⃣ Guia Básico
 | Configuração                  | Valor sugerido           | Descrição |
 |--------------------------------|------------------------|-----------|
 | Assinatura                     | Sua assinatura          | Permissão para criar recursos |
-| Grupo de recursos              | Novo ou existente       | Para organização dos recursos |
-| Nome da instância gerenciada   | Qualquer nome válido    | Regras de nomenclatura do Azure |
-| Região                          | Escolher região         | Regiões suportadas do Azure |
+| Grupo de recursos              | Novo ou existente       | Organização dos recursos |
+| Nome da instância gerenciada   | Nome válido             | Regras de nomenclatura |
+| Região                          | Selecionar região       | Regiões suportadas do Azure |
 | Pertence a um pool de instâncias? | Sim ou Não            | Criar dentro de um pool de instâncias |
 | Método de autenticação          | SQL                     | Autenticação SQL ou Microsoft Entra |
 | Logon do administrador         | Nome válido             | Não usar serveradmin |
 | Senha                           | Senha forte             | Mínimo 16 caracteres |
 
-#### Computação + Armazenamento
+![Guia Básico](open-compute-storage-page.png)
+
+### Computação + Armazenamento
 | Configuração           | Valor sugerido         | Descrição |
 |------------------------|----------------------|-----------|
 | Camada de serviço      | Uso Geral             | Adequada para a maioria das cargas de produção |
@@ -38,11 +31,11 @@ Preencha os campos obrigatórios:
 | Licença SQL Server     | Selecionar aplicável  | Pagamento conforme uso ou existente |
 | Redundância backup     | Geográfica             | Armazenamento de backup seguro |
 
-Clique em **Aplicar** para salvar e prossiga para a guia **Rede**.
+![Computação + Armazenamento](azure-sql-managed-instance-create-deployment-in-progress.png)
 
 ---
 
-### 3. Guia Rede
+## 3️⃣ Guia Rede
 | Configuração                   | Valor sugerido        | Descrição |
 |--------------------------------|---------------------|-----------|
 | Rede virtual / sub-rede         | Criar ou existente  | Modificar se necessário |
@@ -50,14 +43,18 @@ Clique em **Aplicar** para salvar e prossiga para a guia **Rede**.
 | Ponto de extremidade público    | Desabilitar          | Permite acesso externo se habilitado |
 | Permitir acesso                 | Sem acesso           | Define regras de segurança |
 
----
-
-### 4. Guia Segurança
-- Para início rápido, mantenha as configurações padrão.  
+![Guia Rede](azure-sql-managed-instance-resources.png)
 
 ---
 
-### 5. Configurações Adicionais
+## 4️⃣ Guia Segurança
+- Mantendo as configurações padrão para início rápido
+
+![Guia Segurança](azure-sql-managed-instance-security-rules.png)
+
+---
+
+## 5️⃣ Configurações Adicionais
 | Configuração                 | Valor sugerido         | Descrição |
 |-------------------------------|----------------------|-----------|
 | Ordenação                     | Escolher compatível  | Igual à ordenação do SQL Server de origem |
@@ -65,47 +62,42 @@ Clique em **Aplicar** para salvar e prossiga para a guia **Rede**.
 | Replicação geográfica         | Não                  | Somente se usar failover |
 | Janela de manutenção           | Definir janela       | Horário para manutenção planejada |
 
----
-
-### 6. Marcação
-- Adicione **tags** para identificar o proprietário e o ambiente (Ex.: Produção, Desenvolvimento).
 
 ---
 
-### 7. Revisar + Criar
-- Clique em **Examinar + criar** e revise todas as escolhas.  
-- Clique em **Criar** para implantar a instância.
+## 6️⃣ Marcação
+- Adicione tags para identificar **proprietário** e **ambiente** (Produção, Desenvolvimento)
+
+![Marcações](azure-sql-managed-instance-host-name.png)
 
 ---
 
-### 8. Monitoramento
-- Use o **ícone Notificações** para verificar o progresso da implantação.  
-- Após a conclusão, navegue até o **grupo de recursos** para acessar a instância.  
+## 7️⃣ Revisar + Criar
+- Clique em **Examinar + criar** e revise as escolhas
+- Clique em **Criar** para implantar a instância
 
-#### Dica
-Se o navegador for fechado, o provisionamento pode ser monitorado pelo **portal, PowerShell ou CLI do Azure**.
+- ![Monitoramento](azure-sql-managed-instance-create-deployment-in-progress.png)
 
----
 
-### 9. Revisão de Rede
-- Verifique **Tabela de rotas** e **Regras de Segurança** (entrada e saída) no grupo de segurança.
+## 8️⃣ Monitoramento
+- Use o ícone **Notificações** para verificar o progresso
+- Após a conclusão, acesse o **grupo de recursos** para verificar a instância
 
----
-
-### 10. Criar Banco de Dados
-1. Acesse a instância no portal do Azure.  
-2. Clique em **+ Novo banco de dados**.  
-3. Configure nome, fonte de dados (vazio ou backup), e demais parâmetros.  
-4. Clique em **Revisar + criar → Criar**.
+![Exibir instancia ](azure-sql-managed-instance-resources.png)
 
 ---
 
-### 11. Recuperar Detalhes de Conexão
-- Na guia **Visão Geral**, copie o **Host/FQDN** para se conectar à instância.  
-- Exemplo: `nome_do_seu_host.a1b2c3d4e5f6.database.windows.net`
+## 9️⃣ Criar Banco de Dados
+1. Acesse a instância no portal
+2. Clique em **+ Novo banco de dados**
+3. Configure nome, fonte de dados (vazio ou backup), e demais parâmetros
+4. Clique em **Revisar + criar → Criar**
+
+![Criar Banco de Dados](create-new-database-portal.png)
 
 ---
 
-### Referências
-- [Documentação Oficial do Azure](https://learn.microsoft.com/pt-br/azure/)
-- [Início Rápido: Instância Gerenciada de SQL do Azure](https://learn.microsoft.com/pt-br/azure/azure-sql/managed-instance/)
+## 10️⃣ Recuperar Detalhes de Conexão
+- Na guia **Visão Geral**, copie o **Host / FQDN** para se conectar à instância
+
+![Detalhes de Conexão](images/detalhes_conexao.png)
