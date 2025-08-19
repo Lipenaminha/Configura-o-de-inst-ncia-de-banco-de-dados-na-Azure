@@ -45,14 +45,6 @@
 
 ![Guia Rede](azure-sql-managed-instance-resources.png)
 
----
-
-## 4️⃣ Guia Segurança
-- Mantendo as configurações padrão para início rápido
-
-![Guia Segurança](azure-sql-managed-instance-security-rules.png)
-
----
 
 ## 5️⃣ Configurações Adicionais
 | Configuração                 | Valor sugerido         | Descrição |
